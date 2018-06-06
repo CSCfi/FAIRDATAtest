@@ -43,5 +43,5 @@ def reset_dataset(id):
     """ reset a dataset in dpres.
     :return: status code
     """
-    r = requests.post('%s/datasets/%s/resetd' % (URL,id), auth=user, verify=False)
+    r = requests.post('%s/datasets/%s/reset' % (URL,id), auth=user, verify=False)
     return r.status_code
