@@ -2,11 +2,11 @@
     "data_catalog": 1,
     "research_dataset": {
         "title": {
-            "en": "Wonderful Title"
+            "en": "NOT so Wonderful Title: testing"
         },
-        "description": [{
+        "description": {
             "en": "A descriptive description describing the contents of this dataset. Must be descriptive."
-        }],
+        },
         "creator": [
             {
                 "name": "Teppo Testaaja",

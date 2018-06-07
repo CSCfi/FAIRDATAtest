@@ -22,9 +22,6 @@ def initialize_test_account(user,password,host):
         s.sendline(password)
         #pprint(s.prompt())
         #pprint(s.before)
-        # match the prompt
-        # print everything before the prompt.
-        #s.expect('.*Adding user_AB to Pr.*')
         s.logout()
         print("Data initialized")
 

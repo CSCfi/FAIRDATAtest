@@ -1,6 +1,6 @@
 import unittest
 import time
-import metax.metax_dataset_api as metax
+import metax.metax as metax
 import etsin.etsin as etsin
 from utils import loadJSONFile
 from pprint import pprint
@@ -41,6 +41,7 @@ class UnitTestMain(unittest.TestCase):
 
     def setUp(self):
         self.OK = [200,201,202,203,204]
+        self.FAIL = [401,403,404]
 
 
     def tearDown(self):
@@ -59,20 +60,16 @@ class TestMetaxEtsin(UnitTestMain):
         # loading the example dataset
 
         data = loadJSONFile('data.json')
-
         status, cdata = metax.create_dataset(data)
 
         self.assertIn(status, self.OK,"could not create dataset")
         urn = cdata["identifier"]
-        print(cdata['id'])
-
         time.sleep(10)
-        print(urn)
 
-        etsin_status,etsin_data = etsin.view_dataset('urn')
+        etsin_status,etsin_data = etsin.view_dataset(urn)
         self.assertIn(etsin_status, self.OK,"Etsin could not found the dataset")
 
-    @unittest.skip("reason for skipping")
+    #@unittest.skip("reason for skipping")
     def testUpdateDataset(self):
         data = loadJSONFile('data.json')
         status,dataset = metax.create_dataset(data)
@@ -83,23 +80,27 @@ class TestMetaxEtsin(UnitTestMain):
         status,updated_data = metax.update_dataset(dataset['id'], dataset)
         self.assertIn(status, self.OK,"Metax update failure")
         urn = updated_data["identifier"]
-        #etsin_status,etsin_data = etsin.view_dataset(urn)
-        #self.assertEqual(etsin_data["_source"]["title"]["en"],"title updated")
-        #self.assertIn(etsin_status, self.OK,"Etsin failure")
+        etsin_status,etsin_data = etsin.view_dataset(urn)
+        self.assertIn(etsin_status, self.OK,"Etsin failure")
 
-    @unittest.skip("reason for skipping")
+    #@unittest.skip("reason for skipping")
     def testDeleteDataset(self):
 
         data = loadJSONFile('data.json')
 
         status, cdata = metax.create_dataset(data)
         self.assertIn(status, self.OK,"could not create dataset")
+        urn = cdata["identifier"]
+
         time.sleep(2)
         #data = loadJSONFile('metax_dataset.json')
         status = metax.delete_dataset(cdata['id'])
         self.assertIn(status,self.OK,"Metax dataset delete failure")
 
-        # TODO etsin status
+
+        etsin_status, etsin_data = etsin.view_dataset(urn)
+        self.assertIn(etsin_status, self.FAIL, "Etsin found the deleted dataset")
+
 
 if __name__ == '__main__':
     unittest.main(verbosity = 2)

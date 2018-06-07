@@ -2,7 +2,7 @@ import unittest
 import time
 from utils import restart_rabbitmq,start_rabbitmq,stop_rabbitmq,metax_on,metax_off,restart_httpd,delete_file
 import ida.ida as ida
-import metax.metax_dataset_api as metax
+import metax.metax as metax
 from config.config import load_config_variables
 
 from ida.ida_accounts_initialise import initialize_test_account
@@ -101,19 +101,19 @@ class TestIDAMetax(UnitTestMain):
         id = node[-1]["node"]
 
         #Looking for a file in metax
-        status = metax.get_file(id)
-        self.assertIn(status, self.OK, 'Not found in metax')
+        #status = metax.get_file(id)
+        #self.assertIn(status, self.OK, 'Not found in metax')
 
 
-    #@unittest.skip
+    #@unittest.skip("reason here")
     def testUnFreezeFile(self):
 
         data = {
-            "project": "Project_C",
-            "pathname": "/2017-11/Experiment_6/test04.dat"
+            "project": "Project_A",
+            "pathname": "/2017-11/Experiment_6/test03.dat"
         }
 
-        user = 'PSO_Project_C'
+        user = 'PSO_Project_A'
         status, res = ida.freeze_file(user, data)
         self.assertIn(status, self.OK, 'freeze fails')
 
@@ -121,18 +121,20 @@ class TestIDAMetax(UnitTestMain):
         pid = res["pid"]
         node = res["node"]
 
+
         time.sleep(15)
         # Retrieve set of actions
         data1 = {
             "status": "completed",
-            "project": "Project_C"
+            "project": "Project_A"
         }
 
         status, actions = ida.get_actions(user, data1)
         self.assertIn(status, self.OK, 'actions retrieval fails')
 
-        pid = actions["user" == "PSO_Project_C"]["pid"]
-        nodeID = actions["user" == "PSO_Project_C"]["node"]
+
+        pid = actions["user" == "PSO_Project_A"]["pid"]
+        nodeID = actions["user" == "PSO_Project_A"]["node"]
 
         # Retrieve action details of frozen file
         status, actions = ida.get_specific_actions(user, data1, pid)
@@ -141,8 +143,8 @@ class TestIDAMetax(UnitTestMain):
         # Unfreeze file
         data2 = {
             "node": nodeID,
-            "project": "Project_C",
-            "pathname": "/2017-08/Experiment_2/test03.dat"
+            "project": "Project_A",
+            "pathname": "/2017-11/Experiment_6/test03.dat"
         }
         status, res = ida.unfreeze_file(user, data)
         self.assertIn(status, self.OK, 'file unfreeze fails')
@@ -150,7 +152,7 @@ class TestIDAMetax(UnitTestMain):
 
 
 
-    #@unittest.skip
+    #@unittest.skip("")
     def testDeleteFile(self):
         """
                 Delete test case:
@@ -161,7 +163,7 @@ class TestIDAMetax(UnitTestMain):
         #User C freeze experiment 6/test02.dat
         data = {
             "project": "Project_B",
-            "pathname": "/2017-11/Experiment_6/test05.dat"
+            "pathname": "/2017-11/Experiment_6/test04.dat"
         }
 
         user = 'PSO_Project_B'
@@ -174,12 +176,12 @@ class TestIDAMetax(UnitTestMain):
         data = {
             "node": nodeId,
             "project": "Project_B",
-            "pathname": "/2017-11/Experiment_6/test05.dat"
+            "pathname": "/2017-11/Experiment_6/test04.dat"
         }
         status = ida.delete_file(user, data)
-        self.assertIn(status, self.OK, 'freeze fails')
+        self.assertIn(status, self.OK, 'delete fails')
 
-
+    '''
     @unittest.skip
     def testFailedAction(self):
 
@@ -218,7 +220,7 @@ class TestIDAMetax(UnitTestMain):
         print(status)
         pprint(actions)
         #self.assertIn(status, self.OK, 'actions retrieval fails')
-
+    '''
 
 
 

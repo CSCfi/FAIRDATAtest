@@ -96,14 +96,13 @@ if __name__ == '__main__':
    suite.addTest(IdaAppTests("test_valid_timestamp"))
    suite.addTest(IdaAppTests("test_project_access_rights"))
 
-   #suite.addTest(TestMetaxEtsin("testCreateDataset"))
-   #suite.addTest(TestMetaxEtsin("testUpdateDataset"))
-   #suite.addTest(TestMetaxEtsin("testDeleteDataset"))
+   suite.addTest(TestMetaxEtsin("testCreateDataset"))
+   suite.addTest(TestMetaxEtsin("testUpdateDataset"))
+   suite.addTest(TestMetaxEtsin("testDeleteDataset"))
 
    suite.addTest(TestIDAMetax("testFreezeFile"))
    suite.addTest(TestIDAMetax("testUnFreezeFile"))
    suite.addTest(TestIDAMetax("testDeleteFile"))
-   #suite.addTest(TestIDAMetax("testFailedAction"))
 
 
    #suite.addTest(TestMetaxQuvain("testCreateDataset"))

@@ -1,7 +1,7 @@
 import unittest
 import time
 from config.config import load_config_variables
-import metax.metax_dataset_api as metax
+import metax.metax as metax
 import dpres.dpres as dpr
 from utils import loadJSONFile
 
