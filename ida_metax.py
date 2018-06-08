@@ -124,7 +124,7 @@ class TestIDAMetax(UnitTestMain):
 
         time.sleep(25)
         # Retrieve set of actions
-        '''
+        
         data1 = {
             "status": "completed",
             "project": "Project_A"
@@ -149,7 +149,7 @@ class TestIDAMetax(UnitTestMain):
         }
         status, res = ida.unfreeze_file(user, data)
         self.assertIn(status, self.OK, 'file unfreeze fails')
-        '''
+        
         
 
 
@@ -160,7 +160,7 @@ class TestIDAMetax(UnitTestMain):
                 - freezes the file
                 - Delete the frozen file
                 """
-        '''
+        
         #User C freeze experiment 6/test02.dat
         data = {
             "project": "Project_A",
@@ -170,9 +170,9 @@ class TestIDAMetax(UnitTestMain):
         user = 'PSO_Project_A'
         status, res = ida.freeze_file(user, data)
         self.assertIn(status, self.OK, 'freeze fails')
-        '''
+        
         time.sleep(15)
-        '''
+        
         #Delete frozen folder
         nodeId = res['node']
         data = {
@@ -182,50 +182,8 @@ class TestIDAMetax(UnitTestMain):
         }
         status = ida.delete_file(user, data)
         self.assertIn(status, self.OK, 'delete fails')
-        '''
-    '''
-    @unittest.skip
-    def testFailedAction(self):
-
-        # Stop rabbit mq agent
-        #stop_rabbitmq()
-
-
-        # Send a freezing request
-        data = {
-            "project": "Project_B",
-            "pathname": "/2017-08/Experiment_6/test02.dat"
-        }
-
-        user = 'PSO_Project_B'
-        status, res = ida.freeze_file(user, data)
-        self.assertIn(status, self.OK, 'freeze fails')
-
-        # Deleting the file from the storage
-        #delete_file(user,data)
-       
-        # Waiting for the response
-        #time.sleep(130)
-
-        # Starting rabbitmq agent
-        #start_rabbitmq()
-
-        # Waiting for the response
-        #time.sleep(10)
-
-        # Retrieving the filed actions
-        data1 = {
-            "status": "failed",
-            "project": "Project_A"
-        }
-        status, actions = ida.get_actions(user, data1)
-        print(status)
-        pprint(actions)
-        #self.assertIn(status, self.OK, 'actions retrieval fails')
-    '''
-
-
-
+        
+    
 
 if __name__ == '__main__':
     unittest.main(verbosity = 2)
