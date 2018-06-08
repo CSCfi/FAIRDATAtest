@@ -34,7 +34,7 @@ class UnitTestMain(unittest.TestCase):
         print("\t\tInitialize IDA test accounts")
         print("-----" * 20)
         #try:
-        #initialize_test_account(user, password, host)
+        initialize_test_account(user, password, host)
 
         #except Exception as e:
         #    raise e
