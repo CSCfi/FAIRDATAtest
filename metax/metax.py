@@ -61,3 +61,13 @@ def get_file(id):
     r = requests.get(URL_FILES + '/{id}'.format(id=id),
                         auth=(idauser,idapass), timeout=TIMEOUT)
     return r.status_code
+
+
+def flush_project(pname):
+    """ flush all the files related to perticular project """
+
+    print(pname)
+
+    r = requests.post(URL_FILES + '/flush_project?project=Project_C',
+                        auth=(idauser,idapass), timeout=TIMEOUT)
+    return r.status_code

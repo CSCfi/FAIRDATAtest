@@ -27,7 +27,7 @@ class UnitTestMain(unittest.TestCase):
         print("\t\tInitialize IDA test accounts")
         print("-----" * 20)
         #try:
-        initialize_test_account(self.IDA_STABLE_USER, self.PASS, self.HOST)
+        #initialize_test_account(self.IDA_STABLE_USER, self.PASS, self.HOST)
         #except:
         #    pass
         print("-----" * 20)

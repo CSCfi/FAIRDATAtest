@@ -34,7 +34,7 @@ class UnitTestMain(unittest.TestCase):
         print("\t\tInitialize IDA test accounts")
         print("-----" * 20)
         #try:
-        initialize_test_account(user, password, host)
+        #initialize_test_account(user, password, host)
 
         #except Exception as e:
         #    raise e
@@ -47,7 +47,6 @@ class UnitTestMain(unittest.TestCase):
         print("\t1. Freeze file")
         print("\t2. Unfreeze file")
         print("\t3. Delete file")
-        print("\t3. Failed action")
         print("-----" * 20)
         print("-----" * 20)
         # instead of setting a signal handler for ctrl+c,
@@ -57,6 +56,7 @@ class UnitTestMain(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         metax_off()
+        pass
 
 
 
@@ -87,7 +87,7 @@ class TestIDAMetax(UnitTestMain):
 
         data = {
             "project": "Project_A",
-            "pathname": "/2017-10/Experiment_3/test04.dat"
+            "pathname": "/2017-10/Experiment_3/test01.dat"
         }
         user = 'PSO_Project_A'
         status, res = ida.freeze_file(user, data)
@@ -110,7 +110,7 @@ class TestIDAMetax(UnitTestMain):
 
         data = {
             "project": "Project_A",
-            "pathname": "/2017-11/Experiment_6/test03.dat"
+            "pathname": "/2017-10/Experiment_5/test02.dat"
         }
 
         user = 'PSO_Project_A'
@@ -122,8 +122,9 @@ class TestIDAMetax(UnitTestMain):
         node = res["node"]
 
 
-        time.sleep(15)
+        time.sleep(25)
         # Retrieve set of actions
+        '''
         data1 = {
             "status": "completed",
             "project": "Project_A"
@@ -144,43 +145,44 @@ class TestIDAMetax(UnitTestMain):
         data2 = {
             "node": nodeID,
             "project": "Project_A",
-            "pathname": "/2017-11/Experiment_6/test03.dat"
+            "pathname": "/2017-10/Experiment_5/test02.dat"
         }
         status, res = ida.unfreeze_file(user, data)
         self.assertIn(status, self.OK, 'file unfreeze fails')
+        '''
+        
 
 
-
-
-    #@unittest.skip("")
+    #@unittest.skip("reason")
     def testDeleteFile(self):
         """
                 Delete test case:
                 - freezes the file
                 - Delete the frozen file
                 """
-
+        '''
         #User C freeze experiment 6/test02.dat
         data = {
-            "project": "Project_B",
-            "pathname": "/2017-11/Experiment_6/test04.dat"
+            "project": "Project_A",
+            "pathname": "/2017-10/Experiment_4/test03.dat"
         }
 
-        user = 'PSO_Project_B'
+        user = 'PSO_Project_A'
         status, res = ida.freeze_file(user, data)
         self.assertIn(status, self.OK, 'freeze fails')
+        '''
         time.sleep(15)
-
+        '''
         #Delete frozen folder
         nodeId = res['node']
         data = {
             "node": nodeId,
-            "project": "Project_B",
-            "pathname": "/2017-11/Experiment_6/test04.dat"
+            "project": "Project_A",
+            "pathname": "/2017-10/Experiment_4/test03.dat"
         }
         status = ida.delete_file(user, data)
         self.assertIn(status, self.OK, 'delete fails')
-
+        '''
     '''
     @unittest.skip
     def testFailedAction(self):

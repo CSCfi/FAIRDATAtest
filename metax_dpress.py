@@ -72,12 +72,13 @@ class TestMetaxDPress(UnitTestMain):
 
         # creating a dataset
         status,cdata = metax.create_dataset(data)
-
+        
         self.assertIn(status,self.OK,"Metax create dataset fails")
         id = cdata['id']
 
         # preserving the dataset
         status = dpr.preserve_dataset(id)
+        
         self.assertIn(status, self.OK,"dpres preserve fails")
 
 
