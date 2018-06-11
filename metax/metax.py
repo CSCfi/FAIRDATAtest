@@ -5,25 +5,33 @@ from pprint import pprint
 
 # loading the configuration variables
 conf = load_config_variables()
-URL = conf["METAX_STABLE_DATASETS_URL"]
-URL_FILES = conf["METAX_STABLE_FILES_URL"]
-user = conf["ETSIN_USER"]
-pwd = conf["ETSIN_PASS"]
-idauser = conf["METAX_STABLE_USER"]
-idapass = conf["METAX_STABLE_PASS"]
+
+HOST = conf["METAX_HOST"]
+URL_FILES = conf["METAX_HOST"]
+datasetuser = conf["ETSIN_USER"]
+datasetpwd = conf["ETSIN_PASS"]
+fileuser = conf["METAX_USER"]
+filepwd = conf["METAX_PASS"]
 
 # constants
 TIMEOUT = 10
+
+URL_datasets = "https://%s/rest/datasets"%HOST
+URL_files = "https://%s/rest/files"%HOST
+
+
 
 
 def create_dataset(dataset_json):
     """ Create a dataset in MetaX.
     :return: metax-id of the created dataset.
     """
-    r = requests.post(URL,
+
+    print(URL_datasets)
+    r = requests.post(URL_datasets,
                       headers={'Content-Type': 'application/json'},
                       json=dataset_json,
-                      auth=(user,pwd),
+                      auth=(datasetuser,datasetpwd),
                       timeout=TIMEOUT)
 
     return r.status_code,r.json() #return id and created?? why to return whole dataset???
@@ -32,12 +40,12 @@ def create_dataset(dataset_json):
 
 def update_dataset(urn, dataset_json):
 
-    r = requests.put(URL + '/{id}'.format(id=urn),
+    r = requests.put(URL_datasets + '/{id}'.format(id=urn),
                      headers={
                          'Content-Type': 'application/json'
                      },
                      json=dataset_json,
-                     auth=(user, pwd),
+                     auth=(datasetuser, datasetpwd),
                      timeout=TIMEOUT)
     time.sleep(10)
     #print(r.json()['next_version'])
@@ -49,8 +57,8 @@ def update_dataset(urn, dataset_json):
 def delete_dataset(urn):
     """ Delete a dataset from MetaX. """
 
-    r = requests.delete(URL + '/{id}'.format(id=urn),
-                        auth=(user,pwd), timeout=TIMEOUT)
+    r = requests.delete(URL_datasets + '/{id}'.format(id=urn),
+                        auth=(datasetuser,datasetpwd), timeout=TIMEOUT)
     #time.sleep(40)
     return r.status_code
 
@@ -58,16 +66,14 @@ def delete_dataset(urn):
 def get_file(id):
     """ get a file from MetaX. """
 
-    r = requests.get(URL_FILES + '/{id}'.format(id=id),
-                        auth=(idauser,idapass), timeout=TIMEOUT)
+    r = requests.get(URL_files + '/{id}'.format(id=id),
+                        auth=(fileuser,filepwd), timeout=TIMEOUT)
     return r.status_code
 
 
 def flush_project(pname):
     """ flush all the files related to perticular project """
 
-    print(pname)
-
-    r = requests.post(URL_FILES + '/flush_project?project=Project_C',
-                        auth=(idauser,idapass), timeout=TIMEOUT)
+    r = requests.post(URL_files + '/flush_project?project=Project_C',
+                        auth=(fileuser,filepwd), timeout=TIMEOUT)
     return r.status_code

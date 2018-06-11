@@ -6,7 +6,7 @@ from config.config import load_config_variables
 conf = load_config_variables()
 
 
-URL = conf['DPRES_URL']
+HOST = conf['DPRES_HOST']
 USER = conf['DPRES_USER']
 PASS = conf['DPRES_PASS']
 user = (USER, PASS)
@@ -14,6 +14,8 @@ user = (USER, PASS)
 # constants
 TIMEOUT = 30
 
+URL = "https://%s/secure/api/1.0/" %HOST
+print(URL)
 
 def preserve_dataset(id):
     """ preserve a dataset in dpres.

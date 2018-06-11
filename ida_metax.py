@@ -12,9 +12,9 @@ from pprint import pprint
 
 # loading configuration variables
 conf = load_config_variables()
-user = conf['IDA_STABLE_USER']
-password = conf['IDA_STABLE_PASS']
-host = conf['HOST']
+user = conf['IDA_USER']
+password = conf['IDA_PASS']
+host = conf['IDA_HOST']
 
 
 
@@ -33,14 +33,10 @@ class UnitTestMain(unittest.TestCase):
         print("-----" * 20)
         print("\t\tInitialize IDA test accounts")
         print("-----" * 20)
-        #try:
-        initialize_test_account(user, password, host)
 
-        #except Exception as e:
-        #    raise e
-        #    print("not working")
+        initialize_test_account(user, password, host)
         metax_on()
-        #restart_httpd(IDA_STABLE_USER, PASS, HOST)
+
         print("-----" * 20)
         print("\t\tIDA - Metax tests")
         print("-----" * 20)
@@ -56,16 +52,13 @@ class UnitTestMain(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         metax_off()
-        pass
-
-
-
-
+        # flush all the test files 
+        pname = ["A", "B", "B"]
+        for project in pname:
+            metax.flush_project('Project_'+project)
+        print("Flush test files from metax")
 
     def setUp(self):
-        #restart_rabbitmq(IDA_STABLE_USER, PASS, HOST)
-        #time.sleep(3)
-        # loading neccessary variables
         self.OK = [200,201,202,203]
         self.FAIL = [400,401,404]
 
@@ -153,7 +146,7 @@ class TestIDAMetax(UnitTestMain):
         
 
 
-    #@unittest.skip("reason")
+    #@unittest.skip("skipping..")
     def testDeleteFile(self):
         """
                 Delete test case:

@@ -5,9 +5,11 @@ from config.config import load_config_variables
 # loading the configuration variables
 conf = load_config_variables()
 
-URL = conf['IDA_API_ROOT_URL']
+HOST = conf['IDA_HOST']
 PASS = conf['PROJ_USER_PASS']
     
+URL = "https://%s/apps/ida/api"%HOST
+
 # constants
 TIMEOUT = 30
 

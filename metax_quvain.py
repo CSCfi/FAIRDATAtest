@@ -1,5 +1,7 @@
 import unittest 
 from utils import loadJSONFile
+import metax.metax as metax
+import quvain.quvain as quvain
 
 
 class UnitTestMain(unittest.TestCase):
@@ -10,20 +12,16 @@ class UnitTestMain(unittest.TestCase):
     - Initializing the test data
     """
 
-
+    
     @classmethod
     def setUpClass(self):
         print("-----" * 20)
-        print("\t\tQuvain - Metax tests")
+        print("\t\tQuvain - Metax tests") 
         print("-----" * 20 )
-        print("\t1. Create dataset record")
-        print("\t2. Update dataset record")
-        print("\t2.1 Reading/sync an existing dataset from metax")
-        print("\t2.2. Update metadata in dataset record")
-        print("\t2.3. Update IDA file in dataset record")
-        print("\t3. Delete dataset record")
-        print("\t4. Person is identified:Single-sign on messages - test identity (fake user)")
-        print("\t5. Creating a workflow: Quvain - Metax - REMS")
+        print("\t1. Create new dataset")
+        print("\t2. Update dataset")
+        print("\t2. Publish dataset to metax")
+        print("\t2. Sync existing dataset from metax")
         print("-----" * 20)
         print("-----" * 20)
         try:
@@ -35,7 +33,7 @@ class UnitTestMain(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         pass
-        #teardown_test_user_accounts()
+        #TODO: delete all the test data, if published
 
 
     def setUp(self):
@@ -56,21 +54,30 @@ class TestMetaxQuvain(UnitTestMain):
 
     @unittest.skip
     def testCreateDataset(self):
+        print("xx")
         # loading the example dataset
-        data = loadJSONFile('data.json')
+        #TODO: implement the function here 
+        
 
+    @unittest.skip
+    def testUpdateDataset(self):
+        print("xx")
+        # loading the example dataset
+        #TODO: implement the function here 
 
 
     @unittest.skip
-    def testUpdateDateset(self):
-        print("update")
+    def testPublishDataset(self):
+        print("xx")
+        # loading the example dataset
+        #TODO: implement the function here 
 
-    
+
     @unittest.skip
-    def testDeleteDataset(self):
-        print("delete")
-        data = loadJSONFile('metax_dataset.json')
-
+    def testSyncDataset(self):
+        print("xx")
+        # loading the example dataset
+        #TODO: implement the function here 
 
 
 

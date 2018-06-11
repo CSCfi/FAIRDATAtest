@@ -4,13 +4,14 @@ from config.config import load_config_variables
 
 # loading the configuration variables
 conf = load_config_variables()
-URL = conf["ETSIN_DATASETS_URL"]
+HOST = conf["ETSIN_HOST"]
 user = conf["ETSIN_USER"]
 pwd = conf["ETSIN_PASS"]
 
 # constants
 TIMEOUT = 30
 
+URL = "https://%s/es/metax/dataset/"%HOST
 
 def view_dataset(urn):
     """ View a dataset in Etsin.

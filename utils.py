@@ -8,9 +8,9 @@ import os
 # loading configuration variables
 conf = load_config_variables()
 
-user = conf['IDA_STABLE_USER']
-password = conf['IDA_STABLE_PASS']
-host = conf['HOST']
+user = conf['IDA_USER']
+password = conf['IDA_PASS']
+host = conf['IDA_HOST']
 
 
 

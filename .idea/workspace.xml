@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2605dc3-d21f-49a5-8936-9f8a10c0f54d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test_data/.data.json.swo" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/quvain/Quvain.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dpres/dpres.py" afterPath="$PROJECT_DIR$/dpres/dpres.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/etsin/etsin.py" afterPath="$PROJECT_DIR$/etsin/etsin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ida/ida.py" afterPath="$PROJECT_DIR$/ida/ida.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ida_metax.py" afterPath="$PROJECT_DIR$/ida_metax.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/metax/metax.py" afterPath="$PROJECT_DIR$/metax/metax.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/metax_dpress.py" afterPath="$PROJECT_DIR$/metax_dpress.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/metax_quvain.py" afterPath="$PROJECT_DIR$/metax_quvain.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nextcloud_test.py" afterPath="$PROJECT_DIR$/nextcloud_test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quvain/Quvain.py" afterPath="$PROJECT_DIR$/quvain/Quvain.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/config.py" afterPath="$PROJECT_DIR$/template/config.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils.py" afterPath="$PROJECT_DIR$/utils.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,88 +38,8 @@
       <file leaf-file-name="ida_metax.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ida_metax.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1692">
-              <caret line="177" column="33" lean-forward="false" selection-start-line="177" selection-start-column="33" selection-end-line="177" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="25" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ida.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ida/ida.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="17" column="7" lean-forward="false" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="run_all.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/run_all.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="metax_etsin.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/metax_etsin.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="metax_quvain.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/metax_quvain.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="15" column="26" lean-forward="false" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nextcloud_test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nextcloud_test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5516">
-              <caret line="83" column="52" lean-forward="false" selection-start-line="83" selection-start-column="52" selection-end-line="83" selection-end-column="52" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="metax_dpress.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/metax_dpress.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="-1268">
+              <caret line="76" column="5" lean-forward="false" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -127,8 +50,8 @@
       <file leaf-file-name="metax.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/metax/metax.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="72" column="24" lean-forward="true" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
+            <state relative-caret-position="478">
+              <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -136,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils.py">
+      <file leaf-file-name="metax_quvain.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/metax_quvain.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="608">
-              <caret line="136" column="28" lean-forward="false" selection-start-line="136" selection-start-column="28" selection-end-line="136" selection-end-column="28" />
+            <state relative-caret-position="576">
+              <caret line="77" column="19" lean-forward="false" selection-start-line="77" selection-start-column="19" selection-end-line="77" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -190,17 +113,17 @@
         <option value="$PROJECT_DIR$/utils.py" />
         <option value="$PROJECT_DIR$/ida/ida_accounts_initialise.py" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/metax_quvain.py" />
         <option value="$PROJECT_DIR$/metax/metax_dataset_api.py" />
         <option value="$PROJECT_DIR$/etsin/etsin.py" />
         <option value="$PROJECT_DIR$/metax_etsin.py" />
         <option value="$PROJECT_DIR$/run_all.py" />
         <option value="$PROJECT_DIR$/metax_dpress.py" />
-        <option value="$PROJECT_DIR$/metax/metax.py" />
         <option value="$PROJECT_DIR$/ida/ida.py" />
         <option value="$PROJECT_DIR$/nextcloud_test.py" />
         <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/metax/metax.py" />
         <option value="$PROJECT_DIR$/ida_metax.py" />
+        <option value="$PROJECT_DIR$/metax_quvain.py" />
       </list>
     </option>
   </component>
@@ -210,7 +133,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="255" />
     <option name="y" value="41" />
     <option name="width" value="1257" />
@@ -231,8 +154,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -264,6 +185,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -410,7 +333,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="28" width="1920" height="1018" extended-state="6" />
+    <frame x="255" y="41" width="1920" height="1018" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13489583" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -613,20 +536,105 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/metax/metax_dataset_api.py" />
-    <entry file="file://$PROJECT_DIR$/metax_quvain.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="15" column="26" lean-forward="false" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/metax_dpress.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2394">
+          <caret line="137" column="0" lean-forward="false" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nextcloud_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1422">
+          <caret line="83" column="52" lean-forward="false" selection-start-line="83" selection-start-column="52" selection-end-line="83" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#15#0" expanded="false" />
+            <marker date="1528532025799" expanded="true" signature="257:1617" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="764:790" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="1237:1349" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="1395:1447" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="1470:1579" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="1604:1617" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="1652:12581" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="1659:1724" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1528532025799" expanded="true" signature="1767:1813" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="1847:2962" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="1856:2029" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1528532025799" expanded="true" signature="2095:2198" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="2998:4343" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="3007:3196" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1528532025799" expanded="true" signature="3260:3364" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="3555:3633" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="4097:4227" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="4377:5104" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="4386:4487" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1528532025799" expanded="true" signature="4552:4656" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="4871:5003" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="5152:6326" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="5161:5338" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1528532025799" expanded="true" signature="5403:5507" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="5929:5985" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="6147:6203" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="6363:7910" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="6372:6703" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1528532025799" expanded="true" signature="6768:6872" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="7062:7141" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="7654:7788" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="7948:10682" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="7957:8250" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1528532025799" expanded="true" signature="8315:8419" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="8608:8687" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="9217:9391" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="9605:9686" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="9900:9979" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="10184:10254" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="10473:10557" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="10750:12581" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="10759:11069" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1528532025799" expanded="true" signature="11148:11252" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="11503:11607" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="11847:11951" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="12377:12433" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="12596:12929" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="12610:12873" ph="..." />
+            <marker date="1528532025799" expanded="true" signature="12957:13057" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_all.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="828">
+          <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#35#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ida/ida.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="19" column="7" lean-forward="false" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -636,59 +644,23 @@
         <state relative-caret-position="18">
           <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/metax_dpress.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ida/ida.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="17" column="7" lean-forward="false" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="136" column="28" lean-forward="false" selection-start-line="136" selection-start-column="28" selection-end-line="136" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/metax/metax.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="72" column="24" lean-forward="true" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="25" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+        <state relative-caret-position="162">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nextcloud_test.py">
+    <entry file="file://$PROJECT_DIR$/metax/metax.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5516">
-          <caret line="83" column="52" lean-forward="false" selection-start-line="83" selection-start-column="52" selection-end-line="83" selection-end-column="52" />
+        <state relative-caret-position="478">
+          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -697,21 +669,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ida_metax.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1692">
-          <caret line="177" column="33" lean-forward="false" selection-start-line="177" selection-start-column="33" selection-end-line="177" selection-end-column="33" />
+        <state relative-caret-position="-1268">
+          <caret line="76" column="5" lean-forward="false" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run_all.py">
+    <entry file="file://$PROJECT_DIR$/metax_quvain.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="576">
+          <caret line="77" column="19" lean-forward="false" selection-start-line="77" selection-start-column="19" selection-end-line="77" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>

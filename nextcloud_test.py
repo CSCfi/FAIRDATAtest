@@ -20,9 +20,9 @@ class UnitTestMain(unittest.TestCase):
 
     @classmethod
     def setUpClass(self):
-        self.IDA_STABLE_USER = conf['IDA_STABLE_USER']
-        self.PASS = conf['IDA_STABLE_PASS']
-        self.HOST = conf['HOST']
+        self.IDA_STABLE_USER = conf['IDA_USER']
+        self.PASS = conf['IDA_PASS']
+        self.HOST = conf['IDA_HOST']
         print("-----" * 20)
         print("\t\tInitialize IDA test accounts")
         print("-----" * 20)
