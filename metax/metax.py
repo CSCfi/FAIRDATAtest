@@ -7,7 +7,6 @@ from pprint import pprint
 conf = load_config_variables()
 
 HOST = conf["METAX_HOST"]
-URL_FILES = conf["METAX_HOST"]
 datasetuser = conf["ETSIN_USER"]
 datasetpwd = conf["ETSIN_PASS"]
 fileuser = conf["METAX_USER"]
@@ -27,7 +26,7 @@ def create_dataset(dataset_json):
     :return: metax-id of the created dataset.
     """
 
-    print(URL_datasets)
+   
     r = requests.post(URL_datasets,
                       headers={'Content-Type': 'application/json'},
                       json=dataset_json,

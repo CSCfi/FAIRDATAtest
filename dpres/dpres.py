@@ -15,7 +15,7 @@ user = (USER, PASS)
 TIMEOUT = 30
 
 URL = "https://%s/secure/api/1.0/" %HOST
-print(URL)
+
 
 def preserve_dataset(id):
     """ preserve a dataset in dpres.

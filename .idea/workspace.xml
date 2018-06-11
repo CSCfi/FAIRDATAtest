@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f2605dc3-d21f-49a5-8936-9f8a10c0f54d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/quvain/Quvain.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dpres/dpres.py" afterPath="$PROJECT_DIR$/dpres/dpres.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/etsin/etsin.py" afterPath="$PROJECT_DIR$/etsin/etsin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ida/ida.py" afterPath="$PROJECT_DIR$/ida/ida.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ida_metax.py" afterPath="$PROJECT_DIR$/ida_metax.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/metax/metax.py" afterPath="$PROJECT_DIR$/metax/metax.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/metax_quvain.py" afterPath="$PROJECT_DIR$/metax_quvain.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nextcloud_test.py" afterPath="$PROJECT_DIR$/nextcloud_test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/config.py" afterPath="$PROJECT_DIR$/template/config.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils.py" afterPath="$PROJECT_DIR$/utils.py" />
-    </list>
+    <list default="true" id="f2605dc3-d21f-49a5-8936-9f8a10c0f54d" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -133,7 +122,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="255" />
     <option name="y" value="41" />
     <option name="width" value="1257" />
@@ -333,8 +322,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="255" y="41" width="1920" height="1018" extended-state="7" />
-    <editor active="true" />
+    <frame x="255" y="41" width="1920" height="1018" extended-state="6" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13489583" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
