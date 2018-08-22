@@ -1,4 +1,3 @@
-
 def load_config_variables():
     config_dict = {
 

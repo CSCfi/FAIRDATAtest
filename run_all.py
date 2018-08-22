@@ -1,17 +1,17 @@
-import redgreenunittest as unittest
 import time
+
+import redgreenunittest as unittest
+
 from ida_metax import TestIDAMetax
+from metax_dpress import TestMetaxDPress
 from metax_etsin import TestMetaxEtsin
 from nextcloud_test import IdaAppTests
-from metax_quvain import TestMetaxQuvain 
-from metax_dpress import TestMetaxDPress
-
-
 
 OK = 'ok'
 FAIL = 'fail'
 ERROR = 'error'
-SKIP = 'skip' # do not need it, might be in future
+SKIP = 'skip'  # do not need it, might be in future
+
 
 class JsonTestResult(unittest.TextTestResult):
 
@@ -30,7 +30,7 @@ class JsonTestResult(unittest.TextTestResult):
     def json_append(self, test, result, out):
         suite = test.__class__.__name__
         if suite not in out:
-            out[suite] = {OK: [], FAIL: [], ERROR:[], SKIP: []}
+            out[suite] = {OK: [], FAIL: [], ERROR: [], SKIP: []}
         if result is OK:
             out[suite][OK].append(test._testMethodName)
         elif result is FAIL:
@@ -60,10 +60,8 @@ class JsonTestResult(unittest.TextTestResult):
         return json_out
 
 
-
 def result_count(result_dict):
-
-    keys = ["pass", "fail","error","skip",'total']
+    keys = ["pass", "fail", "error", "skip", 'total']
     result_count = dict.fromkeys(keys, 0)
 
     for keys in result_dict.keys():
@@ -71,77 +69,67 @@ def result_count(result_dict):
         result_count["fail"] += len(result_dict[keys]['fail'])
         result_count["error"] += len(result_dict[keys]['error'])
         result_count["skip"] += len(result_dict[keys]['skip'])
-        
+
     total = sum(result_count.values())
 
-    return result_count,total
+    return result_count, total
+
 
 if __name__ == '__main__':
-   
-      
-   # if want to save results in a file 
-   #f = open('output.doc','w')
-   #sys.stdout = f
-   
-   start_time = time.time()
+    # if want to save results in a file
+    # f = open('output.doc','w')
+    # sys.stdout = f
 
-   # create a testsuite
-   suite = unittest.TestSuite()
+    start_time = time.time()
 
-   suite.addTest(IdaAppTests("test_freeze_file"))
-   suite.addTest(IdaAppTests("test_unfreeze_file"))
-   suite.addTest(IdaAppTests("test_delete_file"))
-   suite.addTest(IdaAppTests("test_update_frozen_node_record"))
-   suite.addTest(IdaAppTests("test_update_action"))
-   suite.addTest(IdaAppTests("test_valid_timestamp"))
-   suite.addTest(IdaAppTests("test_project_access_rights"))
+    # create a testsuite
+    suite = unittest.TestSuite()
 
-   suite.addTest(TestMetaxEtsin("testCreateDataset"))
-   suite.addTest(TestMetaxEtsin("testUpdateDataset"))
-   suite.addTest(TestMetaxEtsin("testDeleteDataset"))
+    suite.addTest(IdaAppTests("test_freeze_file"))
+    suite.addTest(IdaAppTests("test_unfreeze_file"))
+    suite.addTest(IdaAppTests("test_delete_file"))
+    suite.addTest(IdaAppTests("test_update_frozen_node_record"))
+    suite.addTest(IdaAppTests("test_update_action"))
+    suite.addTest(IdaAppTests("test_valid_timestamp"))
+    suite.addTest(IdaAppTests("test_project_access_rights"))
 
-   suite.addTest(TestIDAMetax("testFreezeFile"))
-   suite.addTest(TestIDAMetax("testUnFreezeFile"))
-   suite.addTest(TestIDAMetax("testDeleteFile"))
+    suite.addTest(TestMetaxEtsin("testCreateDataset"))
+    suite.addTest(TestMetaxEtsin("testUpdateDataset"))
+    suite.addTest(TestMetaxEtsin("testDeleteDataset"))
 
+    suite.addTest(TestIDAMetax("testFreezeFile"))
+    suite.addTest(TestIDAMetax("testUnFreezeFile"))
+    suite.addTest(TestIDAMetax("testDeleteFile"))
 
-   #suite.addTest(TestMetaxQuvain("testCreateDataset"))
-   #suite.addTest(TestMetaxQuvain("testUpdateDateset"))
-   #suite.addTest(TestMetaxQuvain("testDeleteDataset"))
+    # suite.addTest(TestMetaxQuvain("testCreateDataset"))
+    # suite.addTest(TestMetaxQuvain("testUpdateDateset"))
+    # suite.addTest(TestMetaxQuvain("testDeleteDataset"))
 
+    suite.addTest(TestMetaxDPress("testPreserveDataset"))
+    suite.addTest(TestMetaxDPress("testRejectDataset"))
+    suite.addTest(TestMetaxDPress("testRemoveDataset"))
+    suite.addTest(TestMetaxDPress("testResetDataset"))
 
-   suite.addTest(TestMetaxDPress("testPreserveDataset"))
-   suite.addTest(TestMetaxDPress("testRejectDataset"))
-   suite.addTest(TestMetaxDPress("testRemoveDataset"))
-   suite.addTest(TestMetaxDPress("testResetDataset"))
+    runner = unittest.TextTestRunner(verbosity=2)
 
+    runner.resultclass = JsonTestResult
 
+    result = runner.run(suite)
 
-   runner = unittest.TextTestRunner(verbosity = 2)
+    elapsed_time = time.time() - start_time
 
+    #  print json output
+    result_dict = result.jsonify()
+    count, total = result_count(result_dict)
 
-   runner.resultclass = JsonTestResult
-
-   result = runner.run(suite)
-   
-   elapsed_time = time.time() - start_time
-   
-   #  print json output
-   result_dict = result.jsonify()
-   count,total = result_count(result_dict)
-   
-   
-
-   print("-----" * 20)
-   print("\t\t\tSUMMARY ")
-   print("-----" * 20)
-   print("\n\t\t\tTotal   == " , total)
-   print("\n\t\t\tPASS    == " , count["pass"])
-   print("\t\t\tFAIL    == "  ,  count["fail"])
-   print("\t\t\tERROR   == "  ,  count["error"])
-   print("\t\t\tSKIP    == "  ,  count["skip"])
-   print("\n\t\t\tTime    == "  ,  time.strftime("%H:%M:%S", time.gmtime(elapsed_time)))
-   print("-----" * 20)
-   print("-----" * 20)
-    
-
+    print("-----" * 20)
+    print("\t\t\tSUMMARY ")
+    print("-----" * 20)
+    print("\n\t\t\tTotal   == ", total)
+    print("\n\t\t\tPASS    == ", count["pass"])
+    print("\t\t\tFAIL    == ", count["fail"])
+    print("\t\t\tERROR   == ", count["error"])
+    print("\t\t\tSKIP    == ", count["skip"])
+    print("\n\t\t\tTime    == ", time.strftime("%H:%M:%S", time.gmtime(elapsed_time)))
+    print("-----" * 20)
+    print("-----" * 20)

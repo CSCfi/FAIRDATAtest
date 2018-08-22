@@ -1,23 +1,18 @@
-import unittest 
-from utils import loadJSONFile
-import metax.metax as metax
-import quvain.quvain as quvain
+import unittest
 
 
 class UnitTestMain(unittest.TestCase):
-
     """
     Main class intializing the unittest environment:
     - setting up the variables
     - Initializing the test data
     """
 
-    
     @classmethod
     def setUpClass(self):
         print("-----" * 20)
-        print("\t\tQuvain - Metax tests") 
-        print("-----" * 20 )
+        print("\t\tQuvain - Metax tests")
+        print("-----" * 20)
         print("\t1. Create new dataset")
         print("\t2. Update dataset")
         print("\t2. Publish dataset to metax")
@@ -29,19 +24,17 @@ class UnitTestMain(unittest.TestCase):
         except:
             pass
 
-
     @classmethod
     def tearDownClass(cls):
         pass
-        #TODO: delete all the test data, if published
-
+        # TODO: delete all the test data, if published
 
     def setUp(self):
         pass
 
-
     def tearDown(self):
         pass
+
 
 class TestMetaxQuvain(UnitTestMain):
     """
@@ -56,32 +49,26 @@ class TestMetaxQuvain(UnitTestMain):
     def testCreateDataset(self):
         print("xx")
         # loading the example dataset
-        #TODO: implement the function here 
-        
+        # TODO: implement the function here
 
     @unittest.skip
     def testUpdateDataset(self):
         print("xx")
         # loading the example dataset
-        #TODO: implement the function here 
-
+        # TODO: implement the function here
 
     @unittest.skip
     def testPublishDataset(self):
         print("xx")
         # loading the example dataset
-        #TODO: implement the function here 
-
+        # TODO: implement the function here
 
     @unittest.skip
     def testSyncDataset(self):
         print("xx")
         # loading the example dataset
-        #TODO: implement the function here 
-
-
-
+        # TODO: implement the function here
 
 
 if __name__ == '__main__':
-    unittest.main(verbosity = 2)
+    unittest.main(verbosity=2)

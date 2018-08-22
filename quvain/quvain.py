@@ -1,8 +1,6 @@
 import requests
+
 from config.config import load_config_variables
-import time
-from pprint import pprint
-import quvain.token as qt
 
 # loading the configuration variables
 conf = load_config_variables()
@@ -13,10 +11,7 @@ pwd = conf["QUVAIN_PASS"]
 
 TIMEOUT = 10
 
-
-URL = "https://%s/api/dataset"%HOST
-
-
+URL = "https://%s/api/dataset" % HOST
 
 
 def create_dataset():
@@ -26,10 +21,10 @@ def create_dataset():
     r = requests.post(URL,
                       headers={'Authorization': 'TOK:<MY_TOKEN>'},
                       json=dataset_json,
-                      auth=(user,pwd),
+                      auth=(user, pwd),
                       timeout=TIMEOUT)
 
-    return r.status_code,r.json() 
+    return r.status_code, r.json()
 
 
 def update_dataset():
@@ -40,10 +35,11 @@ def update_dataset():
     r = requests.post(URL,
                       headers={'Authorization': 'TOK:<MY_TOKEN>'},
                       json=dataset_json,
-                      auth=(user,pwd),
+                      auth=(user, pwd),
                       timeout=TIMEOUT)
 
-    return r.status_code,r.json() 
+    return r.status_code, r.json()
+
 
 def sync_dataset():
     """ Sync the metax datasets with quvain
@@ -53,11 +49,10 @@ def sync_dataset():
     r = requests.post(URL,
                       headers={'Authorization': 'TOK:<MY_TOKEN>'},
                       json=dataset_json,
-                      auth=(user,pwd),
+                      auth=(user, pwd),
                       timeout=TIMEOUT)
 
-    return r.status_code,r.json() 
-
+    return r.status_code, r.json()
 
 
 def publish_dataset():
@@ -68,11 +63,7 @@ def publish_dataset():
     r = requests.post(URL,
                       headers={'Authorization': 'TOK:<MY_TOKEN>'},
                       json=dataset_json,
-                      auth=(user,pwd),
+                      auth=(user, pwd),
                       timeout=TIMEOUT)
 
-    return r.status_code,r.json() 
-
-
-
-
+    return r.status_code, r.json()

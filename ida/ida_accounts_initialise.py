@@ -1,16 +1,9 @@
-
-
-import pexpect
 from pexpect import pxssh
-from pprint import pprint
 
 
-
-
-
-def initialize_test_account(user,password,host):
+def initialize_test_account(user, password, host):
     s = pxssh.pxssh(timeout=100)
-    if not s.login(host, user,password):
+    if not s.login(host, user, password):
         print("SSH session failed on login.")
         print(str(s))
     else:
@@ -20,12 +13,7 @@ def initialize_test_account(user,password,host):
         s.sendline(command)
         s.expect('.*assword.*', timeout=5)
         s.sendline(password)
-        #pprint(s.prompt())
-        #pprint(s.before)
+        # pprint(s.prompt())
+        # pprint(s.before)
         s.logout()
         print("Data initialized")
-
-
-
-
-

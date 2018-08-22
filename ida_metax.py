@@ -1,14 +1,11 @@
-import unittest
 import time
-from utils import restart_rabbitmq,start_rabbitmq,stop_rabbitmq,metax_on,metax_off,restart_httpd,delete_file
+import unittest
+
 import ida.ida as ida
 import metax.metax as metax
 from config.config import load_config_variables
-
 from ida.ida_accounts_initialise import initialize_test_account
-from pprint import pprint
-
-
+from utils import metax_on, metax_off
 
 # loading configuration variables
 conf = load_config_variables()
@@ -17,19 +14,15 @@ password = conf['IDA_PASS']
 host = conf['IDA_HOST']
 
 
-
 class UnitTestMain(unittest.TestCase):
-
     """
     Main class intializing the unittest environment:
     - setting up the variables
     - Initializing the test data
     """
 
-
     @classmethod
     def setUpClass(self):
-
         print("-----" * 20)
         print("\t\tInitialize IDA test accounts")
         print("-----" * 20)
@@ -48,36 +41,34 @@ class UnitTestMain(unittest.TestCase):
         # instead of setting a signal handler for ctrl+c,
         # call teardown class to make sure everything is clean
 
-
     @classmethod
     def tearDownClass(cls):
         metax_off()
         # flush all the test files 
         pname = ["A", "B", "B"]
         for project in pname:
-            metax.flush_project('Project_'+project)
+            metax.flush_project('Project_' + project)
         print("Flush test files from metax")
 
     def setUp(self):
-        self.OK = [200,201,202,203]
-        self.FAIL = [400,401,404]
-
+        self.OK = [200, 201, 202, 203]
+        self.FAIL = [400, 401, 404]
 
     def tearDown(self):
         pass
+
 
 class TestIDAMetax(UnitTestMain):
     """
     - IdaAppTests class performing all the test cases
     """
+
     @classmethod
     def setUpClass(self):
         super(TestIDAMetax, self).setUpClass()
 
-    #@unittest.skip("reason for skipping")
+    # @unittest.skip("reason for skipping")
     def testFreezeFile(self):
-
-
         data = {
             "project": "Project_A",
             "pathname": "/2017-10/Experiment_3/test01.dat"
@@ -93,14 +84,12 @@ class TestIDAMetax(UnitTestMain):
         self.assertIn(status, self.OK, 'check if node is empty')
         id = node[-1]["node"]
 
-        #Looking for a file in metax
-        #status = metax.get_file(id)
-        #self.assertIn(status, self.OK, 'Not found in metax')
+        # Looking for a file in metax
+        # status = metax.get_file(id)
+        # self.assertIn(status, self.OK, 'Not found in metax')
 
-
-    #@unittest.skip("reason here")
+    # @unittest.skip("reason here")
     def testUnFreezeFile(self):
-
         data = {
             "project": "Project_A",
             "pathname": "/2017-10/Experiment_5/test02.dat"
@@ -110,14 +99,12 @@ class TestIDAMetax(UnitTestMain):
         status, res = ida.freeze_file(user, data)
         self.assertIn(status, self.OK, 'freeze fails')
 
-
         pid = res["pid"]
         node = res["node"]
 
-
         time.sleep(25)
         # Retrieve set of actions
-        
+
         data1 = {
             "status": "completed",
             "project": "Project_A"
@@ -125,7 +112,6 @@ class TestIDAMetax(UnitTestMain):
 
         status, actions = ida.get_actions(user, data1)
         self.assertIn(status, self.OK, 'actions retrieval fails')
-
 
         pid = actions["user" == "PSO_Project_A"]["pid"]
         nodeID = actions["user" == "PSO_Project_A"]["node"]
@@ -142,19 +128,16 @@ class TestIDAMetax(UnitTestMain):
         }
         status, res = ida.unfreeze_file(user, data)
         self.assertIn(status, self.OK, 'file unfreeze fails')
-        
-        
 
-
-    #@unittest.skip("skipping..")
+    # @unittest.skip("skipping..")
     def testDeleteFile(self):
         """
                 Delete test case:
                 - freezes the file
                 - Delete the frozen file
                 """
-        
-        #User C freeze experiment 6/test02.dat
+
+        # User C freeze experiment 6/test02.dat
         data = {
             "project": "Project_A",
             "pathname": "/2017-10/Experiment_4/test03.dat"
@@ -163,10 +146,10 @@ class TestIDAMetax(UnitTestMain):
         user = 'PSO_Project_A'
         status, res = ida.freeze_file(user, data)
         self.assertIn(status, self.OK, 'freeze fails')
-        
+
         time.sleep(15)
-        
-        #Delete frozen folder
+
+        # Delete frozen folder
         nodeId = res['node']
         data = {
             "node": nodeId,
@@ -175,8 +158,7 @@ class TestIDAMetax(UnitTestMain):
         }
         status = ida.delete_file(user, data)
         self.assertIn(status, self.OK, 'delete fails')
-        
-    
+
 
 if __name__ == '__main__':
-    unittest.main(verbosity = 2)
+    unittest.main(verbosity=2)
