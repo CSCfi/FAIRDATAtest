@@ -7,6 +7,7 @@ __pycache__/
 .idea/
 ubuntu-xenial-16.04-cloudimg-console.log
 .ropeproject/
+reports/
 venv/
 
 # the real conf file used by the program
