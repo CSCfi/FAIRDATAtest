@@ -1,5 +1,6 @@
-responses==0.8.1
-requests==2.18.4
-redgreenunittest==0.1.1
+# a fork of https://github.com/oldani/HtmlTestRunner
+git+https://github.com/JamesMTSloan/HtmlTestRunner.git
+ipdb==0.11
 pexpect==4.4.0
-
+requests==2.18.4
+responses==0.8.1

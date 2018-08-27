@@ -1,21 +1,25 @@
 import requests
 
-from config.config import load_config_variables
+from config import conf_vars
+from utils import load_json_file
 
-# loading the configuration variables
-conf = load_config_variables()
 
-HOST = conf["QUVAIN_HOST"]
-user = conf["QUVAIN_USER"]
-pwd = conf["QUVAIN_PASS"]
+try:
+    HOST = conf_vars["QVAIN"]["HOST"]
+    user = conf_vars["QVAIN"]["USERS"]["QVAIN"]["USER"]
+    pwd = conf_vars["QVAIN"]["USERS"]["QVAIN"]["PASS"]
+    URL = "https://%s/api/dataset" % HOST
+except:
+    print('Note: Qvain not configured')
 
 TIMEOUT = 10
 
-URL = "https://%s/api/dataset" % HOST
+
+dataset_json = load_json_file('basic_dataset.json')
 
 
 def create_dataset():
-    """ creates a dataset in quvain
+    """ creates a dataset in qvain
     :return: function returns status
     """
     r = requests.post(URL,
@@ -28,7 +32,7 @@ def create_dataset():
 
 
 def update_dataset():
-    """ Update the dataset in quvain
+    """ Update the dataset in qvain
     :return: function returns status
     """
 
@@ -42,7 +46,7 @@ def update_dataset():
 
 
 def sync_dataset():
-    """ Sync the metax datasets with quvain
+    """ Sync the metax datasets with qvain
     :return: function returns status
     """
 

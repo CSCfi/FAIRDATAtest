@@ -1,19 +1,18 @@
 import requests
 
-from config.config import load_config_variables
+from config import conf_vars
 
-# loading the configuration variables
-conf = load_config_variables()
 
-HOST = conf['DPRES_HOST']
-USER = conf['DPRES_USER']
-PASS = conf['DPRES_PASS']
-user = (USER, PASS)
+requests.packages.urllib3.disable_warnings()
 
-# constants
-TIMEOUT = 30
-
-URL = "https://%s/secure/api/1.0/" % HOST
+try:
+    HOST = conf_vars['PAS']['HOST']
+    USER = conf_vars['PAS']['USERS']['PAS']['USER']
+    PASS = conf_vars['PAS']['USERS']['PAS']['PASS']
+    user = (USER, PASS)
+    URL = 'https://%s/secure/api/1.0/' % HOST
+except Exception as e:
+    print('Note: PAS not configured')
 
 
 def preserve_dataset(id):
