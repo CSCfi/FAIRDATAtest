@@ -97,6 +97,10 @@ Be careful though, you may accidentally hide useful information.
 * If you find that *YOUR* service is unable to perform the previous step, kindly consider doing something about it, unless you want to be manually resetting your test server everytime someone else is doing something with it and is getting mystical results.
 * A good location for this kind of cleanup code for other services to call (i.e. a simple api call) would probably be among your service's helper methods, such as in `tests/ida/ida.py`
 
+### How to get my tests/changes/whatever included in the repo
+
+Make a pull request.
+
 ## Reporting
 
 When running tests by executing `python run_all.py`, html reports are generated to sub-directory `reports/`.
