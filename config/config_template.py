@@ -57,4 +57,9 @@ conf_vars = {
             },
         }
     },
+
+    "DOWNLOAD": {
+        "HOST": ""
+    },
+
 }
