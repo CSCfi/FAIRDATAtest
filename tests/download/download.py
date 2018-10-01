@@ -7,7 +7,7 @@ try:
     download_host = conf_vars['DOWNLOAD']['HOST']
     download_dataset_url = 'https://%s/api/v1/dataset/' % download_host
 except Exception as e:
-    print('Note: Download not running')
+    print('Note: Download not configured')
 
 
 def download_dataset(urn):
