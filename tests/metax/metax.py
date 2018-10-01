@@ -69,7 +69,7 @@ def find_file_by_project_and_path(project, file_path):
         auth=(fileuser, filepwd), timeout=TIMEOUT, verify=False)
     if resp.status_code == 200:
         for file in resp.json()['results']:
-            if file_path == file['file_path']:
+            if file['file_path'].startswith(file_path):
                 return True
     return False
 

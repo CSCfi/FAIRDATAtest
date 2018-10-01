@@ -10,9 +10,11 @@ from config import conf_vars
 requests.packages.urllib3.disable_warnings()
 
 try:
-    HOST = conf_vars['IDA']['HOST']
-    PASS = conf_vars['IDA']['PROJ_USER_PASS']
-    URL = "https://%s/apps/ida/api" % HOST
+    ida_host = conf_vars['IDA']['HOST']
+    ida_api_pass = conf_vars['IDA']['PROJ_USER_PASS']
+    ida_api_url = "https://%s/apps/ida/api" % ida_host
+    ssh_user = conf_vars['IDA']['USERS']['SSH_USER']['USER']
+    ssh_password = conf_vars['IDA']['USERS']['SSH_USER']['PASS']
 except Exception as e:
     print('Note: Ida not configured')
 
@@ -23,10 +25,10 @@ just so happens to be the same for all test project-users in ida-stable.
 '''
 
 
-def initialize_test_account(user, password, host):
+def initialize_test_accounts():
     print('Initializing ida test accounts...')
     s = pxssh.pxssh(timeout=100)
-    if not s.login(host, user, password):
+    if not s.login(ida_host, ssh_user, ssh_password):
         print("SSH session failed on login.")
         print(str(s))
     else:
@@ -35,7 +37,7 @@ def initialize_test_account(user, password, host):
         s.logfile = open('/tmp/shlog.log', 'wb')
         s.sendline(command)
         s.expect('.*assword.*', timeout=5)
-        s.sendline(password)
+        s.sendline(ssh_password)
         # pprint(s.prompt())
         # pprint(s.before)
         s.logout()
@@ -76,7 +78,7 @@ def freeze_file(user, data):
     """ freeze a file.
     :return: status code, response data
     """
-    r = requests.post('%s/freeze' % URL, json=data, auth=(user, PASS), verify=False)
+    r = requests.post('%s/freeze' % ida_api_url, json=data, auth=(user, ida_api_pass), verify=False)
     return r.status_code, r.json()
 
 
@@ -84,7 +86,7 @@ def unfreeze_file(user, data):
     """ unfreeze a file.
     :return: status code, response data
     """
-    r = requests.post('%s/unfreeze' % URL, json=data, auth=(user, PASS), verify=False)
+    r = requests.post('%s/unfreeze' % ida_api_url, json=data, auth=(user, ida_api_pass), verify=False)
     return r.status_code, r.json()
 
 
@@ -92,7 +94,7 @@ def delete_file(user, data):
     """ delete frozen file.
     :return: status code
     """
-    r = requests.post('%s/delete' % URL, json=data, auth=(user, PASS), verify=False)
+    r = requests.post('%s/delete' % ida_api_url, json=data, auth=(user, ida_api_pass), verify=False)
     return r.status_code
 
 
@@ -100,7 +102,7 @@ def get_frozen_node(user, data, pname):
     """ retrieve frozen node data
     :return: status code, response data
     """
-    r = requests.get('%s/files/byProjectPathname/%s' % (URL, pname), json=data, auth=(user, PASS), verify=False)
+    r = requests.get('%s/files/byProjectPathname/%s' % (ida_api_url, pname), json=data, auth=(user, ida_api_pass), verify=False)
     return r.status_code, r.json()
 
 
@@ -108,7 +110,7 @@ def get_frozen_node_action(user, pid):
     """ retrieve frozen node data associated with action
     :return: status code, response data
     """
-    r = requests.get('%s/files/action/%s' % (URL, pid), auth=(user, PASS), verify=False)
+    r = requests.get('%s/files/action/%s' % (ida_api_url, pid), auth=(user, ida_api_pass), verify=False)
     return r.status_code, r.json()
 
 
@@ -116,7 +118,7 @@ def get_node_details(user, pid):
     """ retrieve frozen node details
     :return: status code, response data
     """
-    r = requests.get('%s/files/%s' % (URL, pid), auth=(user, PASS), verify=False)
+    r = requests.get('%s/files/%s' % (ida_api_url, pid), auth=(user, ida_api_pass), verify=False)
     return r.status_code, r.json()
 
 
@@ -124,7 +126,7 @@ def get_actions(user, data):
     """ retrieve list of all the actions by their status
     :return: status code, response data
     """
-    r = requests.get('%s/actions' % URL, json=data, auth=(user, PASS), verify=False)
+    r = requests.get('%s/actions' % ida_api_url, json=data, auth=(user, ida_api_pass), verify=False)
     return r.status_code, r.json()
 
 
@@ -132,7 +134,7 @@ def get_specific_actions(user, data, pid):
     """ retrieve specific action of specific status
     :return: status code, response data
     """
-    r = requests.get('%s/actions/%s' % (URL, pid), json=data, auth=(user, PASS), verify=False)
+    r = requests.get('%s/actions/%s' % (ida_api_url, pid), json=data, auth=(user, ida_api_pass), verify=False)
     return r.status_code, r.json()
 
 
@@ -140,7 +142,7 @@ def update_node_details(user, pid, data):
     """ Update any specific node node
     :return: status code, response data
     """
-    r = requests.post('%s/files/%s' % (URL, pid), json=data, auth=(user, PASS), verify=False)
+    r = requests.post('%s/files/%s' % (ida_api_url, pid), json=data, auth=(user, ida_api_pass), verify=False)
     return r.status_code
 
 
@@ -148,5 +150,5 @@ def update_action_details(user, pid, data):
     """ update any specific action
     :return: status code, response data
     """
-    r = requests.post('%s/actions/%s' % (URL, pid), json=data, auth=(user, PASS), verify=False)
+    r = requests.post('%s/actions/%s' % (ida_api_url, pid), json=data, auth=(user, ida_api_pass), verify=False)
     return r.status_code

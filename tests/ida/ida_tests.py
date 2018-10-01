@@ -3,27 +3,25 @@ import unittest
 
 from tests.ida import ida
 from tests.metax import metax
-from config import conf_vars
 from utils import service_configured
-
-
-try:
-    host = conf_vars['IDA']['HOST']
-    user = conf_vars['IDA']['USERS']['SSH_USER']['USER']
-    password = conf_vars['IDA']['USERS']['SSH_USER']['PASS']
-except Exception as e:
-    print('Note: Ida not configured')
 
 
 @unittest.skipUnless(service_configured('IDA'), 'Ida not configured')
 @unittest.skipUnless(service_configured('METAX'), 'Metax not configured')
 class TestIdaMetax(unittest.TestCase):
 
+    @staticmethod
+    def _flush_projects():
+        print('Flushing test projects in metax...')
+        for project in ["Project_A", "Project_B", "Project_C"]:
+            metax.flush_project(project)
+
     @classmethod
-    def setUpClass(self):
-        print('Executing %s...' % self.__name__)
+    def setUpClass(cls):
+        print('Executing %s...' % cls.__name__)
         super().setUpClass()
-        ida.initialize_test_account(user, password, host)
+        ida.initialize_test_accounts()
+        cls._flush_projects()
 
     def setUp(self):
         self.OK = [200, 201, 202, 203]
@@ -31,9 +29,7 @@ class TestIdaMetax(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        print('Flushing test projects in metax...')
-        for project in ["Project_A", "Project_B", "Project_C"]:
-            metax.flush_project(project)
+        cls._flush_projects()
 
     def test_freeze_file(self):
         data = {
@@ -106,7 +102,7 @@ class TestIdaMetax(unittest.TestCase):
         for i in range(0, 60):
             status = ida.delete_file(user, data)
             if status == 200:
-                print('unfreeze success')
+                print('delete success')
                 break
 
             # it may take a moment for the previous freeze action to complete. if the
