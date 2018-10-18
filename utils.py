@@ -1,4 +1,4 @@
-import json
+
 import os
 
 import requests
@@ -32,8 +32,3 @@ def get_minimal_dataset_template(template_type='service'):
         return resp.json()
     except Exception:
         raise Exception('Error retrieving dataset template from metax: %s' % str(resp.content))
-
-
-def load_json_file(filename):
-    with open(dir_path + "/test_data/" + filename) as file:
-        return json.load(file)
