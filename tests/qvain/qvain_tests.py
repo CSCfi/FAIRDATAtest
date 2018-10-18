@@ -81,3 +81,11 @@ class TestQvainMetax(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertIsInstance(res, list)
         #print("datasets:", len(res))
+
+    def test_07_DeleteDataset(self):
+        dataset_id = TestQvainMetax.dataset_id
+        if not dataset_id:
+           raise Exception("can't find dataset_id of previously created dataset")
+
+        status, res = qvain.delete_dataset(dataset_id)
+        self.assertEqual(status, 204)

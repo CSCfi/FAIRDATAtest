@@ -98,6 +98,21 @@ def sync_datasets():
     return r.status_code, r.json()
 
 
+def delete_dataset(dataset_id):
+    '''
+    delete_dataset deletes a dataset from the Qvain database.
+
+    Note that the API responds with 204 No Content on success,
+    so this function doesn't return json.
+
+    :return: status, json
+    '''
+    r = requests.delete(URL + dataset_id,
+                      cookies={'sid': SID},
+                      timeout=TIMEOUT)
+
+    return r.status_code, r
+
 
 def make_dataset_from(fairdata_dataset):
     '''
