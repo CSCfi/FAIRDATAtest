@@ -6,6 +6,7 @@ from tests.metax import metax
 from utils import get_minimal_dataset_template, service_configured
 
 
+@unittest.skipUnless(service_configured('ETSIN'), 'Etsin not configured')
 @unittest.skipUnless(service_configured('METAX'), 'Metax not configured')
 class TestEtsinMetax(unittest.TestCase):
 
