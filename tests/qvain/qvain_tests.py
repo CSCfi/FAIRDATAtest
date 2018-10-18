@@ -1,6 +1,6 @@
 import unittest
 import os
-from utils import service_configured, load_json_file
+from utils import service_configured, get_minimal_dataset_template
 from config import conf_vars
 
 from tests.qvain import qvain
@@ -22,7 +22,7 @@ class TestQvainMetax(unittest.TestCase):
         if not self.sid:
             raise Exception("please provide a session id either in the environment or in the config file")
 
-        fairdata_dataset = load_json_file('basic_dataset.json')
+        fairdata_dataset = get_minimal_dataset_template()
         self.dataset = qvain.make_dataset_from(fairdata_dataset)
         self.dataset_id = ""
         self.test_title = "Danska jo"
