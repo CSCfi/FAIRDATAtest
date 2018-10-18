@@ -50,12 +50,7 @@ conf_vars = {
     "QVAIN":  {
         "HOST": "",
         "TOKEN": "",
-        "USERS": {
-            "QVAIN": {
-                "USER": "",
-                "PASS": "",
-            },
-        }
+        "SID": ""
     },
 
     "DOWNLOAD": {
