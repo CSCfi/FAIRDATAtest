@@ -3,7 +3,7 @@ import unittest
 
 from tests.pas import pas
 from tests.metax import metax
-from utils import load_json_file, service_configured
+from utils import get_minimal_dataset_template, service_configured
 
 
 @unittest.skipUnless(service_configured('PAS'), 'PAS not configured')
@@ -22,7 +22,7 @@ class TestPASMetax(unittest.TestCase):
         # Create a dataset in metax and preserve the dataset
 
         # loading the example dataset
-        data = load_json_file('basic_dataset.json')
+        data = get_minimal_dataset_template()
 
         # creating a dataset
         status, cdata = metax.create_dataset(data)
@@ -39,7 +39,7 @@ class TestPASMetax(unittest.TestCase):
         # Create a dataset in metax and reject the dataset for preservation
 
         # loading the example dataset
-        data = load_json_file('basic_dataset.json')
+        data = get_minimal_dataset_template()
 
         # creating a dataset
         status, cdata = metax.create_dataset(data)
@@ -54,7 +54,7 @@ class TestPASMetax(unittest.TestCase):
         # Create a dataset in metax, preserve the dataset and then remove the dataset from preservation
 
         # loading the example dataset
-        data = load_json_file('basic_dataset.json')
+        data = get_minimal_dataset_template()
 
         # creating a dataset
         status, cdata = metax.create_dataset(data)
@@ -74,7 +74,7 @@ class TestPASMetax(unittest.TestCase):
         # Create a dataset in metax, preserve the dataset and then reset the dataset
 
         # loading the example dataset
-        data = load_json_file('basic_dataset.json')
+        data = get_minimal_dataset_template()
 
         # creating a dataset
         status, cdata = metax.create_dataset(data)
