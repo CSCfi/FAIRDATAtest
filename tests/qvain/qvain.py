@@ -1,73 +1,139 @@
 import requests
+import os
 
 from config import conf_vars
-from utils import load_json_file
 
 
 try:
     HOST = conf_vars["QVAIN"]["HOST"]
-    user = conf_vars["QVAIN"]["USERS"]["QVAIN"]["USER"]
-    pwd = conf_vars["QVAIN"]["USERS"]["QVAIN"]["PASS"]
-    URL = "https://%s/api/dataset" % HOST
+    URL = "https://%s/api/datasets/" % HOST
 except:
     print('Note: Qvain not configured')
 
 TIMEOUT = 10
+SID = os.environ.get('QVAIN_SID') or conf_vars['QVAIN']['SID']
+if not SID:
+    raise Exception("qvain: session id `SID` unset")
 
 
-dataset_json = load_json_file('basic_dataset.json')
+def create_dataset(dataset):
+    '''
+    create_dataset creates a new Qvain dataset.
 
-
-def create_dataset():
-    """ creates a dataset in qvain
-    :return: function returns status
-    """
+    :return: status, json
+    '''
     r = requests.post(URL,
-                      headers={'Authorization': 'TOK:<MY_TOKEN>'},
-                      json=dataset_json,
-                      auth=(user, pwd),
+                      cookies={'sid': SID},
+                      json=dataset,
                       timeout=TIMEOUT)
 
     return r.status_code, r.json()
 
 
-def update_dataset():
-    """ Update the dataset in qvain
-    :return: function returns status
-    """
+def update_dataset(dataset_id, dataset):
+    '''
+    update_dataset updates an existing dataset by id.
 
-    r = requests.post(URL,
-                      headers={'Authorization': 'TOK:<MY_TOKEN>'},
-                      json=dataset_json,
-                      auth=(user, pwd),
+    Note that the API responds with 204 No Content on success,
+    so this function doesn't return json.
+
+    :return: status, response
+    '''
+    r = requests.put(URL + dataset_id,
+                     cookies={'sid': SID},
+                     json=dataset,
+                     timeout=TIMEOUT)
+
+    return r.status_code, r
+
+
+def get_dataset(dataset_id):
+    '''
+    get_dataset gets a dataset from Qvain by id.
+    
+    :return: status, json
+    '''
+    r = requests.get(URL + dataset_id,
+                     cookies={'sid': SID},
+                     timeout=TIMEOUT)
+    return r.status_code, r.json()
+
+
+def publish_dataset(dataset_id):
+    '''
+    publish_dataset publishes a Qvain dataset to Metax.
+
+    :return: status, json
+    '''
+    r = requests.get(URL + dataset_id + '/publish',
+                      cookies={'sid': SID},
                       timeout=TIMEOUT)
 
     return r.status_code, r.json()
 
 
-def sync_dataset():
-    """ Sync the metax datasets with qvain
-    :return: function returns status
-    """
+def list_datasets():
+    '''
+    list_datasets lists a user's datasets.
 
-    r = requests.post(URL,
-                      headers={'Authorization': 'TOK:<MY_TOKEN>'},
-                      json=dataset_json,
-                      auth=(user, pwd),
+    :return: status, json
+    '''
+    r = requests.get(URL,
+                      cookies={'sid': SID},
                       timeout=TIMEOUT)
 
     return r.status_code, r.json()
 
 
-def publish_dataset():
-    """ Publishes the dataset to metax
-    :return: function returns status
-    """
+def sync_datasets():
+    '''
+    sync_datasets lists a user's datasets but triggers a synchronisation with the Metax API first.
 
-    r = requests.post(URL,
-                      headers={'Authorization': 'TOK:<MY_TOKEN>'},
-                      json=dataset_json,
-                      auth=(user, pwd),
+    :return: status, json
+    '''
+    r = requests.get(URL + '?fetch',
+                      cookies={'sid': SID},
                       timeout=TIMEOUT)
 
     return r.status_code, r.json()
+
+
+def delete_dataset(dataset_id):
+    '''
+    delete_dataset deletes a dataset from the Qvain database.
+
+    Note that the API responds with 204 No Content on success,
+    so this function doesn't return json.
+
+    :return: status, json
+    '''
+    r = requests.delete(URL + dataset_id,
+                      cookies={'sid': SID},
+                      timeout=TIMEOUT)
+
+    return r.status_code, r
+
+
+def make_dataset_from(fairdata_dataset):
+    '''
+    make_dataset_from creates a dataset based on a fairdata (metax) dataset.
+
+    This throws away everything except 'research_dataset' because Qvain
+    will wrap the data in the appropriate template for the specified schema.
+
+    Qvain groups structurally congruent (interchangable) datasets in "families";
+    Fairdata IDA and PAS schemas have type 2 (int).
+
+    Qvain refers to the current Metax schema as "metax-ida".
+
+    :return: object that parses to JSON for Qvain API
+    '''
+    if not 'research_dataset' in fairdata_dataset:
+        raise Exception("no 'research_dataset' field in test dataset")
+
+    return {
+        'valid': False,
+        'type': 2,
+        'schema': 'metax-ida',
+        'dataset': fairdata_dataset['research_dataset'],
+    }
