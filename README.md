@@ -6,6 +6,10 @@ The purpose of these tests is to find out whether some recent change in features
 
 The current integration test environment consists of "<service>-stable" servers, but any other server can be used by configuring the tests to use them, and making sure firewalls etc permit it.
 
+### General Fairdata integration tests information
+
+See wikipage at https://wiki.csc.fi/TPAS/TestingPractises
+
 ### When and why would I want to run integration tests?
 
 **When:** Before deploying anything to production. Before testing, you should ensure that the versions of the services you are testing with, are either the same versions as their production instances, OR, the same newer versions that you will be deploying to production with. **Why:** Because you hate manually testing if your service still works when someone else decided to update a service you depend on.
@@ -108,3 +112,5 @@ When running tests by executing `python run_all.py`, html reports are generated 
 The test suites utilize a fork of HTMLTestRunner https://github.com/JamesMTSloan/HtmlTestRunner This fork has a useful feature which combines different reports into a single report (the upstream version will be used once that feature PR is merged to it).
 
 In the report, tests are grouped by test suite, and ordering is alphabetical. If the report does not seem to be containing enough information, it is possible to customize the template.
+
+Remember to append generated test reports to "Archived test results" in https://wiki.csc.fi/TPAS/TestingPractises
